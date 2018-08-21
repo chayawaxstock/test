@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <script>
+
+        function* getSquer(x) {
+            while (true) {
+                x = x ** 2;
+                yield x;
+            }
+        }
+
+        var g = getSquer(2)
+        let timeToRepeat = [];
+
+        function submitInput() {
+
+            for (let i = 0; i < 5; timeToRepeat[i] = i++);
+            timeToRepeat.reduce(callPromise, new Promise((x, y) => { x() }))
+        }
+        function callPromise(prevPromise, currentVal, timerIndex) {
+            return prevPromise.then(() => new Promise((resolve, reject) => {
+                let sec = timeToRepeat[timerIndex] = g.next().value;
+                setTimeout(
+                    () => {
+                        console.log(`<p>Timer number ${timerIndex}, waited ${sec} sec (${(new Date()).toLocaleTimeString()}`);
+                        resolve();
+                    }, sec * 1000)
+            }));
+        }
+        submitInput();
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
