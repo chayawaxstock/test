@@ -24,12 +24,14 @@
             text-align: center;
             min-height: 100vh;
         }
-        .card{
-            border-style:solid;
+
+        .card {
+            border-style: solid;
             padding: 50px;
 
         }
-        button{
+
+        button {
             width: 100px;
             height: 50px;
             margin: 20px;
@@ -42,14 +44,12 @@
         }
 
         function tableCreate() {
-
             var body = document.getElementById("addTable");
             var tbl = document.createElement("table");
             var tblBody = document.createElement("tbody");
             for (var j = 0; j < 3; j++) {
                 var row = document.createElement("tr");
                 for (var i = 0; i < 3; i++) {
-
                     var cell = document.createElement("td");
                     row.appendChild(cell);
                 }
@@ -66,23 +66,19 @@
         function cleanBackGround() {
             var tbl = document.getElementById("table");
             var numRows = tbl.rows.length;
-
             for (var i = 0; i < numRows; i++) {
                 var cells = tbl.rows[i].getElementsByTagName('td');
                 for (var ic = 0, it = cells.length; ic < it; ic++) {
-
-
                     cells[ic].style.backgroundColor = "transparent";
                 }
             }
         }
 
-        function check(v) { 
+        function check(v) {
             console.log(eval(v));
             cleanBackGround();
             var tbl = document.getElementById("table");
             var numRows = tbl.rows.length;
-
             for (var i = 0; i < numRows; i++) {
                 var cells = tbl.rows[i].getElementsByTagName('td');
                 for (var ic = 0, it = cells.length; ic < it; ic++) {
@@ -91,9 +87,7 @@
                         cells[ic].style.backgroundColor = "aqua";
                 }
             }
-
         }
-      
 
     </script>
 </head>
