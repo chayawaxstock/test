@@ -1,1 +1,169 @@
-Dx cxzczxczx
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        td {
+            width: 100px;
+            height: 100px;
+        }
+
+        .center-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+        .card{
+            border-style:solid;
+            padding: 50px;
+
+        }
+        button{
+            width: 100px;
+            height: 50px;
+            margin: 20px;
+        }
+    </style>
+    <script>
+
+        function onload() {
+            tableCreate();
+          //  document.getElementById("btn1").addEventListener("click", Upper);
+            document.getElementById("btn2").addEventListener("click", Diagnolas);
+            document.getElementById("btn3").addEventListener("click", Down);
+            document.getElementById("btn4").addEventListener("click", Border);
+        }
+
+        function tableCreate() {
+
+            var body = document.getElementById("addTable");
+            var tbl = document.createElement("table");
+            var tblBody = document.createElement("tbody");
+            for (var j = 0; j < 3; j++) {
+                var row = document.createElement("tr");
+                for (var i = 0; i < 3; i++) {
+
+                    var cell = document.createElement("td");
+                    row.appendChild(cell);
+                }
+                tblBody.appendChild(row);
+            }
+            tbl.appendChild(tblBody);
+            body.appendChild(tbl);
+            tbl.setAttribute("border", "2");
+            tbl.setAttribute("id", "table");
+            tbl.setAttribute("class", "table table-bordered");
+        }
+
+
+        function cleanBackGround() {
+            var tbl = document.getElementById("table");
+            var numRows = tbl.rows.length;
+
+            for (var i = 0; i < numRows; i++) {
+                var cells = tbl.rows[i].getElementsByTagName('td');
+                for (var ic = 0, it = cells.length; ic < it; ic++) {
+
+
+                    cells[ic].style.backgroundColor = "transparent";
+                }
+            }
+        }
+
+        function Diagnolas() {
+
+            cleanBackGround();
+            var tbl = document.getElementById("table");
+            var numRows = tbl.rows.length;
+
+            for (var i = 0; i < numRows; i++) {
+                var cells = tbl.rows[i].getElementsByTagName('td');
+                for (var ic = 0, it = cells.length; ic < it; ic++) {
+
+                    if (i == ic || i + ic == numRows - 1)
+                        cells[ic].style.backgroundColor = "aqua";
+                }
+            }
+        }
+
+        function check(v) { 
+            console.log(eval(v));
+            cleanBackGround();
+            var tbl = document.getElementById("table");
+            var numRows = tbl.rows.length;
+
+            for (var i = 0; i < numRows; i++) {
+                var cells = tbl.rows[i].getElementsByTagName('td');
+                for (var ic = 0, it = cells.length; ic < it; ic++) {
+
+                    if (eval(v))
+                        cells[ic].style.backgroundColor = "aqua";
+                }
+            }
+
+        }
+        function Down() {
+            cleanBackGround();
+            var tbl = document.getElementById("table");
+            var numRows = tbl.rows.length;
+
+            for (var i = 0; i < numRows; i++) {
+                var cells = tbl.rows[i].getElementsByTagName('td');
+                for (var ic = 0, it = cells.length; ic < it; ic++) {
+
+                    if (i >= ic)
+                        cells[ic].style.backgroundColor = "aqua";
+                }
+            }
+
+
+        }
+        function Border() {
+            cleanBackGround();
+            var tbl = document.getElementById("table");
+            var numRows = tbl.rows.length;
+
+            for (var i = 0; i < numRows; i++) {
+                var cells = tbl.rows[i].getElementsByTagName('td');
+                for (var ic = 0, it = cells.length; ic < it; ic++) {
+
+                    if (i == 0 || i == numRows - 1 || ic == 0 || ic == numRows - 1)
+                        cells[ic].style.backgroundColor = "aqua";
+                }
+            }
+        }
+
+
+    </script>
+</head>
+
+<body onload="onload()">
+
+    <div class="center-screen">
+        <div class="card" style="width:400px">
+            <h1 class="card-title"> Matrix</h4>
+                <div class="card-body">
+
+                    <button id="btn1" class="btn btn-light" onclick="Upper(`i <= ic`)">Upper Part</button>
+                    <button id=btn2 class="btn btn-light" onclick="Upper(`i <= ic`)">Diagnolas</button>
+                    <br/>
+                    <button id="btn3" class="btn btn-light" onclick="Upper(`i <= ic`)">Down part</button>
+                    <button id="btn4" class="btn btn-light" onclick="Upper(`i <= ic`)">Border</button>
+                    <div id="addTable"></div>
+                </div>
+        </div>
+    </div>
+</body>
+
+</html>
