@@ -39,10 +39,6 @@
 
         function onload() {
             tableCreate();
-          //  document.getElementById("btn1").addEventListener("click", Upper);
-            document.getElementById("btn2").addEventListener("click", Diagnolas);
-            document.getElementById("btn3").addEventListener("click", Down);
-            document.getElementById("btn4").addEventListener("click", Border);
         }
 
         function tableCreate() {
@@ -81,22 +77,6 @@
             }
         }
 
-        function Diagnolas() {
-
-            cleanBackGround();
-            var tbl = document.getElementById("table");
-            var numRows = tbl.rows.length;
-
-            for (var i = 0; i < numRows; i++) {
-                var cells = tbl.rows[i].getElementsByTagName('td');
-                for (var ic = 0, it = cells.length; ic < it; ic++) {
-
-                    if (i == ic || i + ic == numRows - 1)
-                        cells[ic].style.backgroundColor = "aqua";
-                }
-            }
-        }
-
         function check(v) { 
             console.log(eval(v));
             cleanBackGround();
@@ -113,37 +93,7 @@
             }
 
         }
-        function Down() {
-            cleanBackGround();
-            var tbl = document.getElementById("table");
-            var numRows = tbl.rows.length;
-
-            for (var i = 0; i < numRows; i++) {
-                var cells = tbl.rows[i].getElementsByTagName('td');
-                for (var ic = 0, it = cells.length; ic < it; ic++) {
-
-                    if (i >= ic)
-                        cells[ic].style.backgroundColor = "aqua";
-                }
-            }
-
-
-        }
-        function Border() {
-            cleanBackGround();
-            var tbl = document.getElementById("table");
-            var numRows = tbl.rows.length;
-
-            for (var i = 0; i < numRows; i++) {
-                var cells = tbl.rows[i].getElementsByTagName('td');
-                for (var ic = 0, it = cells.length; ic < it; ic++) {
-
-                    if (i == 0 || i == numRows - 1 || ic == 0 || ic == numRows - 1)
-                        cells[ic].style.backgroundColor = "aqua";
-                }
-            }
-        }
-
+      
 
     </script>
 </head>
@@ -155,11 +105,11 @@
             <h1 class="card-title"> Matrix</h4>
                 <div class="card-body">
 
-                    <button id="btn1" class="btn btn-light" onclick="Upper(`i <= ic`)">Upper Part</button>
-                    <button id=btn2 class="btn btn-light" onclick="Upper(`i <= ic`)">Diagnolas</button>
+                    <button id="btn1" class="btn btn-light" onclick="check(`i <= ic`)">Upper Part</button>
+                    <button id=btn2 class="btn btn-light" onclick="check(`i == ic || i + ic == numRows - 1`)">Diagnolas</button>
                     <br/>
-                    <button id="btn3" class="btn btn-light" onclick="Upper(`i <= ic`)">Down part</button>
-                    <button id="btn4" class="btn btn-light" onclick="Upper(`i <= ic`)">Border</button>
+                    <button id="btn3" class="btn btn-light" onclick="check(`i >= ic`)">Down part</button>
+                    <button id="btn4" class="btn btn-light" onclick="check(`i == 0 || i == numRows - 1 || ic == 0 || ic == numRows - 1`)">Border</button>
                     <div id="addTable"></div>
                 </div>
         </div>
