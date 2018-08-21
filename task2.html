@@ -16,20 +16,20 @@
             height: 100px;
         }
 
-        .center-screen {
+        /* .center-screen {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             min-height: 100vh;
-        }
+        } */
 
-        .card {
+        /* .card {
             border-style: solid;
             padding: 50px;
 
-        }
+        } */
 
         button {
             width: 100px;
@@ -75,7 +75,7 @@
         }
 
         function check(rgx) {
-            console.log(eval(v));
+
             cleanBackGround();
             var tbl = document.getElementById("table");
             var numRows = tbl.rows.length;
@@ -91,22 +91,23 @@
     </script>
 </head>
 
-<body onload="onload()">
+<body onload="onload()" class="center-block">
 
-    <div class="center-screen">
-        <div class="card" style="width:400px">
-            <h1 class="card-title"> Matrix</h4>
-                <div class="card-body">
+    <div class="col-md-4 col-sm-offset-4 col-xs-12" >
 
-                    <button id="btn1" class="btn btn-light" onclick="check(`i <= ic`)">Upper Part</button>
-                    <button id=btn2 class="btn btn-light" onclick="check(`i == ic || i + ic == numRows - 1`)">Diagnolas</button>
-                    <br/>
-                    <button id="btn3" class="btn btn-light" onclick="check(`i >= ic`)">Down part</button>
-                    <button id="btn4" class="btn btn-light" onclick="check(`i == 0 || i == numRows - 1 || ic == 0 || ic == numRows - 1`)">Border</button>
-                    <div id="addTable"></div>
-                </div>
-        </div>
+            <header>
+                    <h1>Matrix</h1>
+                </header>
+                <div id="buttons" class="col-md-10 col-sm-offset-1 col-xs-12">
+        <button id="btn1" class="btn btn-light" onclick="check(`i <= ic`)">Upper Part</button>
+        <button id=btn2 class="btn btn-light" onclick="check(`i == ic || i + ic == numRows - 1`)">Diagnolas</button>
+        <br/>
+        <button id="btn3" class="btn btn-light" onclick="check(`i >= ic`)">Down part</button>
+        <button id="btn4" class="btn btn-light" onclick="check(`i == 0 || i == numRows - 1 || ic == 0 || ic == numRows - 1`)">Border</button>
+    </div>
+        <div id="addTable" class="col-md-10 col-sm-offset-1 col-xs-12"></div>
     </div>
 </body>
+
 
 </html>
